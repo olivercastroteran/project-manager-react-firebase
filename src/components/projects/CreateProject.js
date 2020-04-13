@@ -36,7 +36,9 @@ class CreateProject extends Component {
             ></textarea>
           </div>
           <div className="input-field">
-            <button className="btn teal z-depth-0 white-text">Create</button>
+            <button className="btn  blue darken-2 z-depth-0 white-text">
+              Create
+            </button>
           </div>
         </form>
       </div>
