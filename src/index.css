@@ -8,6 +8,14 @@ body {
   background-position: center;
 }
 
+.logo {
+  margin-top: 10px;
+}
+
+.row {
+  margin-top: 1.2rem;
+}
+
 form {
   padding: 20px;
   margin-top: 60px;
