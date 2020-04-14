@@ -30,6 +30,14 @@ form button {
   margin-top: 20px;
 }
 
+.blue.darken-2 {
+  transition: all 0.3s;
+}
+
+.blue.darken-2:hover {
+  background-color: #155885 !important;
+}
+
 input[type='text']:not(.browser-default):focus:not([readonly]),
 input[type='email']:not(.browser-default):focus:not([readonly]),
 input[type='password']:not(.browser-default):focus:not([readonly]),
