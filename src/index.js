@@ -24,6 +24,11 @@ const store = createStore(
   )
 );
 
+const rrfConfig = {
+  userProfile: 'users',
+  useFirestoreForProfile: true, // Firestore for Profile instead of Realtime DB
+};
+
 const rrfProps = {
   firebase,
   config: fbConfig,
