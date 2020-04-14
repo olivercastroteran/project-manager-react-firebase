@@ -25,7 +25,7 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  //console.log(state);
   return {
     projects: state.firestore.ordered.projects,
   };
@@ -35,3 +35,28 @@ export default compose(
   firestoreConnect(['projects']),
   connect(mapStateToProps)
 )(Dashboard);
+
+/*
+const mapStateToProps = (state) => {
+     return {
+          project: state.firestore.data[project] && state.firestore.data.project
+          // Not state.firestore.ordered as a single project document will be fetched so technically there is no order needed.
+          // If you still want state.firestore.ordered, you can try the following:        
+          // project: state.firestore.ordered.project[0]
+          // But be aware that ordered will have just one document so you will need extra [0] 
+     }
+}
+
+export default compose(
+     connect(
+          mapStateToProps
+     ),
+     firestoreConnect(props => {
+
+          // console.log("firestoreConnect props are the same that are passed to the component, ", props);
+          return [
+               { collection: "projects", doc: props.match.params.id, storeAs: "project" },
+          ];
+     })
+)(Quiz);
+*/
