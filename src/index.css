@@ -58,4 +58,7 @@ input[type='password']:not(.browser-default):focus:not([readonly]) + label {
     margin-top: 15px;
     width: 100px;
   }
+  .nav-links > li {
+    margin: 0 -5px;
+  }
 }
