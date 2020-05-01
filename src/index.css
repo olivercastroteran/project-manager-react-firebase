@@ -52,3 +52,10 @@ input[type='email']:not(.browser-default):focus:not([readonly]) + label,
 input[type='password']:not(.browser-default):focus:not([readonly]) + label {
   color: #3498db !important;
 }
+
+@media (max-width: 480px) {
+  .logo {
+    margin-top: 15px;
+    width: 100px;
+  }
+}
