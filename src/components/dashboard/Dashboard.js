@@ -9,7 +9,7 @@ import { Redirect } from 'react-router-dom';
 class Dashboard extends Component {
   render() {
     // console.log(this.props);
-    const { projects, auth } = this.props;
+    const { projects, auth, notifications } = this.props;
 
     if (!auth.uid) return <Redirect to="/signin" />;
 
@@ -20,7 +20,7 @@ class Dashboard extends Component {
             <ProjectList projects={projects} />
           </div>
           <div className="col s12 m5 offset-m1">
-            <Notifications />
+            <Notifications notifications={notifications} />
           </div>
         </div>
       </div>
@@ -33,35 +33,14 @@ const mapStateToProps = (state) => {
   return {
     projects: state.firestore.ordered.projects,
     auth: state.firebase.auth,
+    notifications: state.firestore.ordered.notifications,
   };
 };
 
 export default compose(
-  firestoreConnect(['projects']),
+  firestoreConnect([
+    { collection: 'projects', orderBy: ['createdAt', 'desc'] },
+    { collection: 'notifications', limit: 3, orderBy: ['time', 'desc'] },
+  ]),
   connect(mapStateToProps)
 )(Dashboard);
-
-/*
-const mapStateToProps = (state) => {
-     return {
-          project: state.firestore.data[project] && state.firestore.data.project
-          // Not state.firestore.ordered as a single project document will be fetched so technically there is no order needed.
-          // If you still want state.firestore.ordered, you can try the following:        
-          // project: state.firestore.ordered.project[0]
-          // But be aware that ordered will have just one document so you will need extra [0] 
-     }
-}
-
-export default compose(
-     connect(
-          mapStateToProps
-     ),
-     firestoreConnect(props => {
-
-          // console.log("firestoreConnect props are the same that are passed to the component, ", props);
-          return [
-               { collection: "projects", doc: props.match.params.id, storeAs: "project" },
-          ];
-     })
-)(Quiz);
-*/
